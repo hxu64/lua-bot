@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lua Bot</title>
+  <style>
+    #heading {
+      margin-top: 20vw;
+    }
+  
+    body {
+      font-family: "DM Sans", "Helvetica", sans-serif;
+      /* font-family: "IBM Plex Sans", sans-serif; */
+      margin_top: 10vw;
+      margin-left: 20vw;
+      margin-right: 20vw;
+      background-color: white;
+    }
+  
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0px; /* Assuming 20 pixels from the left edge */
+      width: 15vw; /* Adjust the width as needed */
+      height: 100vw;
+      background-color: rgb(200, 200, 200);
+      z-index: -1; /* Place the pseudo-element behind the content */
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0px; /* Assuming 20 pixels from the right edge */
+      width: 15vw; /* Adjust the width as needed */
+      height: 100vw;
+      background-color: rgb(200, 200, 200);
+      z-index: -1; /* Place the pseudo-element behind the content */
+    }
+  
+    nav {
+      position: absolute;
+      background-color: #333;
+      width: 60vw;
+      color: #fff;
+    }
+    
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    nav li {
+      float: left;
+    }
+    
+    nav li a {
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    nav li a:hover {
+      background-color: #111;
+    }
+
+    li.right {
+      float: right;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+  
+<body>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#levelling">Levelling</a></li>
+      <li><a href="#commands">Commands</a></li>
+      <!-- <li><a href="https://top.gg/bot/1077736832726478879", target="_blank", class="right">Vote</a></li> -->
+    </ul>
+  </nav>
+
+  <!-- <h1 >Hello!</h1> -->
+
+  <h1>------------------------------------------</h1>
+
+  <!-- <p style="font-size: 5px;"><span style="color: #ffffff;">:)</span></p> -->
+  
+  <h1 id="home">🌔 Lua  <span style="color: #966e00;">Bot</span></h1>
+
+  <p>A currency and levelling bot by 8n2</p>
+
+  <p><em>not related to lua, the scripting language</em></p>
+
+  <p style="font-size: 20px;">Bot status: <span style="color: #00ff00;">●</span> Online</p>
+  
+  <!-- <p style="font-size: 20px;">Bot status: <span style="color: #ff0000;">●</span> Offline</p>
+
+  <p>Bot is currently being ratelimited as of June 19th 1:00PM EST</p> -->
+
+  <hr>
+  
+  <h2 id="contact">Contact me:</h2>
+  
+  <p>I am the only developer working on this project, and listed below are the only official avenues of communication. Anyone else claiming to be me is an <a href="https://en.wikipedia.org/wiki/Among_Us", target="_blank">impostor</a>.</p>
+  
+  <p>My discord: <a href="https://discord.gg", target="_blank">8n2#0</a></p>
+  
+  <p>Official discord server: <a href="https://discord.gg/7qWYAtMDEa", target="_blank">Lua Development Discord Server</a></p>
+  
+  <hr>
+
+  <h2 id="features">Features</h2>
+
+  <p>Lua adds a fully functional economy and levelling system, with its' primary currency unit being the ‘coin’. Coins can be used to purchase tradable items. Note that <b>coins have no real world value</b>. Both coins and levelling experience are obtainable through sending messages that are visible to the bot.</p>
+  
+  <p>Lua's levelling system includes a unique prestige mechanic, where users can reset their level to 0 after reaching level 50 in order to gain a prestige rank. This gives server admins fine-tuned control over levelling progression and reward, which very few alternatives provide. More informat  ion can be found in the <a href="#levelling">Levelling</a> section.</p>
+
+  <p>To ensure that Lua can coexist with other bots, Lua's prefix can be edited on a server by server basis.</p>
+  
+  <hr>
+  
+  <h2 id="levelling">Levelling</h2>
+
+  <p>Levels and prestiges are stored individually by server.</p>
+  <p>Each user will only have 1 message count to their message total every minute</p>
+  <p>Users may prestige only if their level is greater than or equal to 50</p>
+  <p><em>When prestiging, any messages after Level 50 will not be transferred to the next prestige</em></p>
+  <p><em>Note that users may choose to not prestige and continue beyond level 50</em></p>
+  <p>It takes approximately 2500 minutes of messaging to reach the 1st prestige</p>
+
+  <h3>Levelling Functions</h3>
+
+  <h4>Converting message total to level:</h4>
+  <div>
+    \[f\left(x\right)=\sqrt{x-5}\cdot0.9^{r}\]
+  </div>
+  <p>x is the message total</p>
+  <p>p is the number of prestiges</p>
+
+  <h4>Calculating for # of messages required to reach desired level:</h4>
+  <div>
+    \[g\left(x,\ p\right)=\frac{x^{2}}{0.9^{2p}}+5\]
+  </div>
+  <p>x is the desired number of levels</p>
+  <p>p is the number of prestiges</p>
+
+  <hr>
+
+  <h2 id="commands">List of supported commands:</h2>
+
+  <p>Lua's prefix defaults to <b>!</b>.</p>
+  <p><b>lua prefix</b>: gets the server's prefix. this command doesn't require a prefix</p>
+
+  <h3>Key</h3>
+  
+  <p><b>{arg}</b>: argument</p>
+  <p><b>*{arg}</b>: optional argument</p>
+
+  <h3>Utility Commands</h3>
+  
+  <p><b>!ping</b>: gets ping</p>
+  <p><b>!help</b>: helpful information</p>
+  <p><b>!commands</b>: gets the list of commands</p>
+  <p><b>!whois</b>: gets user_id</p>
+  <p><b>!bin {number}</b>: converts a base-10 number to binary</p>
+  <p><b>!oct {number}</b>: converts a base-10 number to octal</p>
+  <p><b>!hex {number}</b>: converts a base-10 number fo hexadecimal</p>
+  <p><b>!reverse {message}</b>: reverses a message</p>
+  <p><b>!launches</b>: gets the current # of launches</p>
+
+  <h3>Economy Commands</h3>
+  
+  <p><b>!claim</b>: claims 50 coins</p>
+  <p><b>!balance *{user}</b>: gets the user's balance</p>
+  <p><b>!coinflip {wager}</b>: performs a coinflip with wager</p>
+  <p><b>!gamble {wager}</b>: multiplies the wager by (-1:1) and adds to user's balance</p>
+  <p><b>!pay {user} {amount}</b>: pays user some amount of coins</p>
+  <p><b>!shop</b>: lists available shop items</p>
+  <p><b>!info {itemid}</b>: gets an item's description</p>
+  <p><b>!buy {itemid} *{amount}</b>: purchases an item</p>
+  <p><b>!inventory *{userid}</b>: view someone's inventory</p>
+  <p><b>!use {itemid}</b>: uses an item</p>
+  <p><b>!jobs</b>: lists all the available jobs</p>
+  <p><b>!work *{jobid}</b>: change jobs or work</p>
+  <p><b>!gift {itemid} {userid} *{amount}</b>: gifts item(s) to a user</p>
+  <p><b>!recipes</b>: lists all available recipes</p>
+  <p><b>!craft {itemid} *{amount}</b>: crafts the specified amount of items</p>
+
+  <h3>Levelling Commands</h3>
+  
+  <p><b>!level *{user_id}</b>: gets the relevant user's level</p>
+  <p><b>!prestige</b>: gain 1 prestige rank and resets the user's level</p>
+
+  <h3>Administrator Commands</h3>
+
+  <p><em>These commands require admin permissions</em></p>
+
+  <p><b>!prefixset {new_prefix}</b>: sets the prefix in a particular server to new_prefix</p>
+  <p><b>!disable {channel}</b>: disables Lua in the specified channel</p>
+  <p><b>!enable {channel}</b>: enables Lua in the specified channel</p>
+
+  <hr>
+
+  <h2><a href="#home">Back to top</a></h2>
+
+  <p>Made with 🫑 by 8n2</p>
+  
+</body>
+</html>
